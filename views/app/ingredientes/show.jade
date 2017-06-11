@@ -1,0 +1,30 @@
+extends ../../layout.jade
+extends ../home.jade
+block contenido_2
+	div(class="container")
+		div(class="row")
+			div(class="col m12") 
+				h2 Detalles - #{ingrediente.title}
+	div(class="container")
+		div(class="row")
+			div(class="col s12 m5") 
+				div(class="card z-depth-1")
+					div(class="card-image waves-effect waves-block waves-light")
+						img(src="/public/img/ingredientes/#{ingrediente._id}.#{ingrediente.imagen}")
+			div(class="col s12 m7") 
+				form(action="/app/ingredientes/#{ingrediente._id}?_method=PUT", method="POST" class="col s12 m12" enctype="multipart/form-data")
+					div(class="card-panel")
+						div(class="row")
+							div(class="input-field col s12")
+								input(type="text", name="title", placeholder="Título de Receta", id="title" class="validate" value="#{ingrediente.title}")
+								label(for="title") Título
+						div(class="row")
+							div(class="input-field col s12")
+								input(type="file", name="image", id="image" value="#{ingrediente._id}.#{ingrediente.imagen}")
+						div(class="row")
+							div(class="input-field col s6 center")
+								button(class="btn waves-effect waves-light" type="submit" name="action") Actualizar 
+									i(class="material-icons right") send
+							div(class="input-field col s6 center")
+								a(href="/app/ingredientes/delete/#{ingrediente._id}" class="btn waves-effect waves-light red darken-3" type="submit" name="action") Eliminar 
+							

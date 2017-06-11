@@ -1,0 +1,45 @@
+extends ../../layout.jade
+extends ../home.jade
+block contenido_2
+	div(class="container")
+		div(class="row")
+			div(class="col m12") 
+				h2 Detalles - #{receta.title}
+	div(class="container")
+		div(class="row")
+			div(class="col s12 m5") 
+				div(class="card z-depth-1")
+					div(class="card-image waves-effect waves-block waves-light")
+						img(src="/public/img/recetas/#{receta._id}.#{receta.imagen}")
+			div(class="col s12 m7") 
+				form(action="/app/recetas/#{receta._id}?_method=PUT", method="POST" class="col s12 m12" enctype="multipart/form-data")
+					div(class="card-panel")
+						div(class="row")
+							div(class="input-field col s12")
+								input(type="text", name="title", placeholder="Título de Receta", id="title" class="validate" value="#{receta.title}")
+								label(for="title") Título
+						div(class="row")
+							div(class="input-field col s12")
+								input(type="file", name="image", id="image" value="#{receta._id}.#{receta.imagen}")
+						div(class="row")
+							div(class="input-field col s12")
+								select(multiple class="icons" name="ingredientes" id="ingredientes")
+									option(value="" disabled selected) Seleccione Ingredientes
+									for ingrediente in result_ing
+										if receta.ingredientes.indexOf(ingrediente.title) != -1
+											option(value="#{ingrediente.title}" data-icon="/public/img/ingredientes/#{ingrediente._id}.#{ingrediente.imagen}" class="circle" selected)= ingrediente.title
+										else
+											option(value="#{ingrediente.title}" data-icon="/public/img/ingredientes/#{ingrediente._id}.#{ingrediente.imagen}" class="circle")= ingrediente.title
+								label Ingredientes
+						div(class="row")
+							div(class="input-field col s12")
+								textarea(name="preparacion", id="preparacion" class="materialize-textarea")= receta.preparacion
+								label(for="preparacion") Preparación
+						div(class="row")
+							div(class="input-field col s6 center")
+								button(class="btn waves-effect waves-light" type="submit" name="action") Actualizar 
+									i(class="material-icons right") send
+							div(class="input-field col s6 center")
+								a(href="/app/recetas/delete/#{receta._id}" class="btn waves-effect waves-light red darken-3" type="submit" name="action") Eliminar 
+							
+

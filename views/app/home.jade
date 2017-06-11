@@ -1,0 +1,26 @@
+extends ../layout.jade
+block contenido
+	div(class="navbar-fixed")
+		nav
+			div(class="nav-wrapper teal")
+				a(href="#!" class="brand-logo big-left-space") Recetario
+				a(href="#" data-activates="nav-mobile" class="button-collapse"): i(class="material-icons") menu 
+				ul(class="right hide-on-med-and-down")
+					li: a(href="/app"): i(class="material-icons tooltipped" data-position="bottom" data-delay="10" data-tooltip="Inicio") home
+					li: a(href="/app/recetas"): i(class="material-icons tooltipped" data-position="bottom" data-delay="10" data-tooltip="Recetas") receipt
+					li: a(href="/app/ingredientes"): i(class="material-icons tooltipped" data-position="bottom" data-delay="10" data-tooltip="Ingredientes") shopping_cart
+					li: a(href="/login"): i(class="material-icons tooltipped" data-position="bottom" data-delay="10" data-tooltip="Salir") exit_to_app
+				ul(id="nav-mobile" class="side-nav")
+					li: a(href="/app"): i(class="material-icons tooltipped" data-position="bottom" data-delay="10" data-tooltip="Inicio") home
+					li: a(href="/app/recetas"): i(class="material-icons tooltipped" data-position="bottom" data-delay="10" data-tooltip="Recetas") receipt
+					li: a(href="/app/ingredientes"): i(class="material-icons tooltipped" data-position="bottom" data-delay="10" data-tooltip="Ingredientes") shopping_cart
+					li: a(href="/login"): i(class="material-icons tooltipped" data-position="bottom" data-delay="10" data-tooltip="Salir") exit_to_app
+block contenido_2
+	div(class="slider z-depth-1 fullscreen")
+		ul(class="slides")
+			each val in recetas
+				li
+					img(src="public/img/recetas/#{val._id}.#{val.imagen}")
+					div(class="caption left-align")
+						h3(class="grey-text text-darken-4")= val.title
+						a(class="grey-text text-darken-4" href="/app/recetas/#{val._id}") Ver más...

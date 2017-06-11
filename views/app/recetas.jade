@@ -1,0 +1,25 @@
+extends ../layout.jade
+extends ./home.jade
+block contenido_2
+	div(class="container")
+		div(class="row")
+			for receta in recetas
+				div(class="col s12 m4")
+					div(class="card z-depth-1")
+						div(class="card-image waves-effect waves-block waves-light")
+							img(class="activator img-rec" src="/public/img/recetas/#{receta._id}.#{receta.imagen}")
+						div(class="card-content")
+							span(class="card-title activator grey-text text-darken-4")= receta.title
+								i(class="material-icons right") more_vert
+							p: a(href="/app/recetas/#{receta._id}") Ver más
+						div(class="card-reveal")
+							span(class="card-title grey-text text-darken-4") Ingredientes
+								i(class="material-icons right") close
+							ul
+								each val in receta.ingredientes
+									li= val
+							p= receta.preparacion
+	div(class="fixed-action-btn" style="bottom: 45px; right: 24px;")
+		a(class="btn-floating btn-large red"): i(class="large material-icons") mode_edit
+		ul
+			li: a(href="/app/recetas/new" class="btn-floating red"): i(class="material-icons tooltipped" data-position="left" data-delay="10" data-tooltip="Nueva Receta") add_to_photos

@@ -1,0 +1,9 @@
+extends ../../layout.jade
+extends ../home.jade
+block contenido_2
+	div(class="container")
+		h1 Mis Ingredientes
+		for ingrediente in ingredientes
+			h2=ingrediente.title
+			a(href="/app/imagenes/#{ingrediente._id}/edit" class="right-space") Editar
+			a(href="/app/imagenes/#{ingrediente._id}/") Eliminar

@@ -1,0 +1,19 @@
+extends ../layout.jade
+extends ./home.jade
+block contenido_2
+	div(class="container")
+		div(class="row")
+			for ingrediente in ingredientes
+				div(class="col m3")
+					div(class="card z-depth-1")
+						div(class="card-image")
+							img(class="img-ing" src="/public/img/ingredientes/#{ingrediente._id}.#{ingrediente.imagen}")
+						div(class="card-content")
+							span(class="small card-title activator grey-text text-darken-4")= ingrediente.title
+						div(class="card-action")
+							a(href="/app/ingredientes/#{ingrediente._id}") Editar
+							a(href="/app/ingredientes/delete/#{ingrediente._id}") Eliminar
+	div(class="fixed-action-btn" style="bottom: 45px; right: 24px;")
+		a(class="btn-floating btn-large red"): i(class="large material-icons") mode_edit
+		ul
+			li: a(href="/app/ingredientes/new" class="btn-floating red"): i(class="material-icons tooltipped" data-position="left" data-delay="10" data-tooltip="Nuevo Ingrediente") add_shopping_cart

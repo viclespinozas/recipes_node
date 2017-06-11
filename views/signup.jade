@@ -1,0 +1,29 @@
+extends ./layout.jade
+block contenido
+	div(class="container big-top-space big-right-space")
+		div(class="row")
+			form(action="/users", method="POST" class="col m8")
+				div(class="card-panel")
+					div(class="row")
+						div(class="input-field col s12")
+							input(type="email", name="email", placeholder="Email", id="email" class="validate")
+							label(for="email" data-error="Email Inválido" data-success="Email Verificado") Email
+					div(class="row")
+						div(class="input-field col s12")
+							input(type="password", name="password", id="password" class="validate")
+							label(for="password") Password
+					div(class="row")
+						div(class="input-field col s12")
+							input(type="password", name="password_confirmation", id="password_confirmation")
+							label(for="password_confirmation") Password Confirmation
+					div(class="row")
+						div(class="input-field col s12")
+							input(type="text", name="username", placeholder="Nombre de Usuario", id="username" class="validate")
+							label(for="username") Username
+					div(class="divider")
+					div(class="row")
+						div(class="input-field col s8 left")
+							button(class="btn waves-effect waves-light" type="submit" name="action") Registrarse 
+								i(class="material-icons right") send
+						div(class="input-field col s4 right")
+								a(href="/login" class="teal-text darken-4") Ya tengo cuenta
