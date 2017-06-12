@@ -47,7 +47,8 @@ router.route("/recetas/:id")
 					fs.rename(req.body.image.path, "public/img/recetas/" + receta._id + "." + extension);
 					Receta.find({},function(err,recetas){
 						if(err){ res.redirect("/app"); return;}
-						res.render("app/recetas", {recetas: recetas}).sort({ title: 1 });
+						// res.render("app/recetas", {recetas: recetas}).sort({ title: 1 });
+						res.render("app/recetas", {recetas: recetas});
 					});
 				}
 				else{
@@ -98,7 +99,7 @@ router.route("/ingredientes/:id")
 					fs.rename(req.body.image.path, "public/img/ingredientes/" + ingrediente._id + "." + extension);
 					Ingrediente.find({},function(err,ingredientes){
 						if(err){ res.redirect("/app"); return;}
-						res.render("app/ingredientes", {ingredientes: ingredientes}).sort({ title: 1 });
+						res.render("app/ingredientes", {ingredientes: ingredientes});
 					});
 				}
 				else{
@@ -113,7 +114,7 @@ router.get("/ingredientes/delete/:id", function(req,res){
 		if(!err){
 			Ingrediente.find({},function(err,ingredientes){
 				if(err){ res.redirect("/app"); return;}
-				res.render("app/ingredientes", {ingredientes: ingredientes}).sort({ title: 1 });
+				res.render("app/ingredientes", {ingredientes: ingredientes});
 			});
 		}
 		else

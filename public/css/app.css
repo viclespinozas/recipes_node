@@ -18,6 +18,9 @@
 	height: 199.83px;
 	width: 299.75px;
 }
+.img-fixed-height {
+    height: 278px;
+}
 #cheader {
 	background-color: black;
     /*Opacity start*/
