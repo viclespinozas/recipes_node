@@ -21,6 +21,9 @@
 .img-fixed-height {
     height: 278px;
 }
+.caption-title {
+    background-color: rgba(0,0,0,0.5);
+}
 #cheader {
 	background-color: black;
     /*Opacity start*/
