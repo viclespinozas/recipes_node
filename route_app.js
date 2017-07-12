@@ -69,8 +69,8 @@ router.get("/recetas/delete/:id", function(req,res){
 		if(!err){
 			Receta.find({},function(err,recetas){
 				if(err){ res.redirect("/app"); return;}
-				res.render("app/recetas", {recetas: recetas}).sort({ title: 1 });
-			});
+				res.render("app/recetas", {recetas: recetas});
+			}).sort({ title: 1 });
 		}
 		else
 		{
@@ -115,7 +115,7 @@ router.get("/ingredientes/delete/:id", function(req,res){
 			Ingrediente.find({},function(err,ingredientes){
 				if(err){ res.redirect("/app"); return;}
 				res.render("app/ingredientes", {ingredientes: ingredientes});
-			});
+			}).sort({ title: 1 });
 		}
 		else
 		{

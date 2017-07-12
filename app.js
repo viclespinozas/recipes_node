@@ -64,7 +64,7 @@ app.post("/users",function(req,res){
 
 app.post("/sessions", function(req,res){
 	User.findOne({username: req.body.username, password: req.body.password}, function(err,user){
-		if(err){
+		if(err || !user){
 			console.log(String(err));
 			res.send("Usuario y/o Contraseña Inválidos");
 		}
